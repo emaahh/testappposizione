@@ -31,12 +31,10 @@ export default function Home() {
     const interval = setInterval(() => {
       if('geolocation' in navigator) {
           // Retrieve latitude & longitude coordinates from `navigator.geolocation` Web API
-          var options = {timeout:60000};
-
+          console.log("aggiorno")
           navigator.geolocation.getCurrentPosition(
             ({ coords }) => { const { latitude, longitude } = coords; setLocation({ latitude, longitude });},
-            errorHandler,
-            options
+            errorHandler
           )
       }else { 
         alert("Geolocation is not supported by this browser.")
