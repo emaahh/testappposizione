@@ -28,18 +28,22 @@ export default function Home() {
  }
 
   useEffect(() => {
-    if('geolocation' in navigator) {
-        // Retrieve latitude & longitude coordinates from `navigator.geolocation` Web API
-        var options = {timeout:60000};
+    const interval = setInterval(() => {
+      if('geolocation' in navigator) {
+          // Retrieve latitude & longitude coordinates from `navigator.geolocation` Web API
+          var options = {timeout:60000};
 
-        navigator.geolocation.getCurrentPosition(
-          ({ coords }) => { const { latitude, longitude } = coords; setLocation({ latitude, longitude });},
-          errorHandler,
-          options
-        )
-    }else { 
-      alert("Geolocation is not supported by this browser.")
-    }
+          navigator.geolocation.getCurrentPosition(
+            ({ coords }) => { const { latitude, longitude } = coords; setLocation({ latitude, longitude });},
+            errorHandler,
+            options
+          )
+      }else { 
+        alert("Geolocation is not supported by this browser.")
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
 
