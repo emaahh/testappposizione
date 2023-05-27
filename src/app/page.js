@@ -106,7 +106,7 @@ export default function Home() {
         {JSON.stringify(location)}
       </h6>
       
-      <p>Made by @_emaahh_</p>
+      <p>Made by <a href='https://www.instagram.com/_emaahh_/' target='_blank'>@_emaahh_</a></p>
     </main>
   )
 }
