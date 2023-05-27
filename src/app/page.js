@@ -80,7 +80,7 @@ export default function Home() {
         
           <Map height={500} defaultCenter={[location.latitude, location.longitude]} defaultZoom={11}>
             <Marker onClick={() => alert("ti trovi qui")} color={"red"} width={50} anchor={[location.latitude, location.longitude]} />
-            <Marker onClick={() => alert("ti trovi qui")} color={"green"} width={50} anchor={[posizioneCarro.latitudine, posizioneCarro.longitudine]} />
+            <Marker onClick={() => alert("il carro si trova qui")} color={"green"} width={50} anchor={[posizioneCarro.latitudine, posizioneCarro.longitudine]} />
           </Map>
 
         :null
@@ -96,7 +96,12 @@ export default function Home() {
       </h4>
 
       <h6>
-        {JSON.stringify(posizioneCarro.latitudine)}, {JSON.stringify(posizioneCarro.longitudine)}
+        {
+          posizioneCarro?
+            <>{JSON.stringify(posizioneCarro.latitudine)}, {JSON.stringify(posizioneCarro.longitudine)}, ultimo aggiornamento:{posizioneCarro.updated}</>
+          : null
+        }
+        
         <br/>
         {JSON.stringify(location)}
       </h6>
